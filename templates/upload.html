@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'head-imports.html' %}
+</head>
+
+<body style="background-color:green">
+    <header>
+        {% include 'navbar.html' %}
+    </header>
+
+    <section class="container" id="content">
+        <div class="custom-file mb-3">
+            <form id="upload-form" action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data">
+
+                <strong>Files:</strong>
+                <br>
+                <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+                <div id="msg"></div>
+                <input type="submit" value="Upload!" id="upload-button">
+            </form>
+        </div>
+    </section>
+    <br><br>
+    <div class="imgs">
+        {% for image in images %}
+        <img class="imgs" style="height: auto;" src="{{ url_for('send_image', filename=image) }}" />
+        <a class="nav-link" href="/delete/{{image}}">Delete</a>
+        {% endfor %}
+    </div>
+    {% include 'scripts.html' %}
+</body>
+
+</html>

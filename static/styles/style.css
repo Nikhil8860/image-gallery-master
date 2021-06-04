@@ -1,0 +1,9 @@
+
+.main-img {
+    width: 50%;
+    height: auto;
+    float: left;
+    padding: 25px;
+    /* border: 2px solid red; */
+    margin-top: 30px;
+}

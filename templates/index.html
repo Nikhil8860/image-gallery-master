@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'head-imports.html' %}
+</head>
+
+<body style="background-color:green">
+<header>
+    <nav class="navbar navbar-fixed navbar-inner header" style="padding: 0px 16px">
+        <div class="navbar-brand" style="color: green;display: table;">
+            <i class="fa fa-bolt fa-3x" style="color: white;"></i>
+            <a href="/"
+               style="display: table-cell; vertical-align: middle; padding-left: 15px;color: white;">CHARAN DAL</a>
+        </div>
+
+        <ul class="nav pull-right">
+            <li>
+                <a class="nav-link" href="/register">Register</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/upload">Upload</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/filters">Filters</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container-fluid" style="margin-top: 10px;">
+    <div style="color: white;">सदा किसानों के हक के लिए लड़ने वाले चौधरी चरण सिंह जिन्होंने किसानों को उनकी जमीन दिलाई और
+        उन्हें किसान कहलाने का हक दिया
+        हमारा उद्देश्य चौधरी चरण सिंह जी के विचारों पर चलना और उनकी दी हुई विरासत को संभालकर रखना।
+    </div>
+</div>
+
+<section class="container" id="content">
+    {% include 'gallery.html' %}
+</section>
+
+{% include 'scripts.html' %}
+
+<script src="{{url_for('static', filename='scripts/main.js')}}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+# Logs
+.vscode/
+
+# dotenv environment variables file
+.env
+
