@@ -1,8 +1,6 @@
 import os
-from flask import Flask, request, render_template, send_from_directory, session, redirect
+from flask import Flask, request, render_template, send_from_directory, session, redirect, flash
 import json
-import re
-
 from flask_mysqldb import MySQL
 
 import MySQLdb.cursors
@@ -30,31 +28,28 @@ def not_found(e):
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     msg = ''
-    if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
-        username = request.form['username']
-        password = request.form['password']
+    print(request.form)
+    if request.method == 'POST':
+        first_name = request.form['fname']
+        last_name = request.form['lname']
         email = request.form['email']
-        print(username, password, email, sep='--')
+        phone = request.form['phone']
+        msg = request.form['msg']
+
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM accounts WHERE username = % s', (username,))
-        account = cursor.fetchone()
-        if account:
-            msg = 'Account already exists !'
-        elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
-            msg = 'Invalid email address !'
-        elif not re.match(r'[A-Za-z0-9]+', username):
-            msg = 'Username must contain only characters and numbers !'
-        elif not username or not password or not email:
-            msg = 'Please fill out the form !'
-        else:
-            cursor.execute('INSERT INTO accounts VALUES (NULL, % s, % s, % s)', (username, password, email,))
-            mysql.connection.commit()
-            msg = 'You have successfully registered !'
+        sql = 'INSERT INTO register (first_name, last_name, email, phone, msg ) VALUES (%s, %s, %s, %s, %s)'
+        val = (first_name, last_name, email, phone, msg)
+
+        cursor.execute(sql, val)
+        mysql.connection.commit()
+        msg = 'You have successfully registered !'
+        flash(msg)
     elif request.method == 'POST':
         msg = 'Please fill out the form !'
     return render_template('register.html', msg=msg)
 
 
+@app.route('/home')
 @app.route("/")
 def index():
     images = os.listdir('./images')
