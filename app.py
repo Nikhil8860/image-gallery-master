@@ -26,8 +26,8 @@ Session(app)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
-MERCHANT_ID = "lNwrBZ12471380578241"
-MERCHANT_KEY = "QmfZKLHeBQmFd@sD"
+MERCHANT_ID = <your-merchant ID>
+MERCHANT_KEY = <Your MERCHANT_KEY>
 WEBSITE_NAME = "WEBSTAGING"
 # WEBSITE_NAME = "http://127.0.0.1:8080/"
 INDUSTRY_TYPE_ID = "Retail"
