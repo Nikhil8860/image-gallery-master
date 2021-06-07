@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Form</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/form.css') }}">
-</head>
-<body>
+
+{% include 'nav.html' %}
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 {% for message in messages %}
@@ -21,8 +11,8 @@
 {% endif %}
 {% endwith %}
 
-<div class="container" style="margin-left: 20%;">
-    <h1 style="margin-left: 30%; color: white;">Your Message</h1>
+<div class="container">
+    <h1 style="color: white;">Your Message</h1>
     <br>
     <form class="form-horizontal" action="{{ url_for('register') }}" method="post">
 <!--    <form class="form-horizontal" action="/" method="get">-->
@@ -39,6 +29,39 @@
             </div>
         </div>
 
+      <div class="form-group">
+            <label class="control-label col-sm-2" for="dob">Date of birth:</label>
+            <div class="col-sm-6">
+                <input type="date" class="form-control" id="dob" required name="dob">
+            </div>
+        </div>
+
+       <div class="form-group">
+            <label class="control-label col-sm-2" for="city">Village/City:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="city" required placeholder="Enter Village/City" name="city">
+            </div>
+        </div>
+
+      <div class="form-group">
+            <label class="control-label col-sm-2" for="pincode">Pin code:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"  id="pincode" required placeholder="Enter Pin code" name="pincode">
+            </div>
+        </div>
+        
+        <div class="form-group col-sm-6">
+            <label for="district">Select District</label>
+            <select class="form-control" id="district" name="district">
+            </select>
+          </div>
+
+      <!-- <div class="form-group">
+            <label class="control-label col-sm-2" for="district">District:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="district" required placeholder="Enter District" name="district">
+            </div>
+        </div> -->
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">Email:</label>
             <div class="col-sm-6">
@@ -70,6 +93,5 @@
 
     </form>
 </div>
-
-</body>
-</html>
+{% include 'footer.html'  %}
+{% include 'scripts.html' %}

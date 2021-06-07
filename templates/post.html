@@ -1,0 +1,8 @@
+{% include 'nav.html' %}
+<div class="card container mt-md-2">
+  <h5 class="card-header">{{post.title | replace("-"," ") | title}}</h5>
+  <div class="card-body">
+<!--    <h5 class="card-title">{{post.title}}</h5>-->
+    <p class="card-text">{{post.description}}</p>
+  </div>
+</div>

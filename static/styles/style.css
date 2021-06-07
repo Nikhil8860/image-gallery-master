@@ -1,9 +1,25 @@
 
-.main-img {
+/* .main-img {
     width: 50%;
     height: auto;
     float: left;
     padding: 25px;
-    /* border: 2px solid red; */
+    border: 2px solid red;
     margin-top: 30px;
+} */
+body{
+    background-color: green;
 }
+.btn:focus, .btn:active, button:focus, button:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  
+  #image-gallery .modal-footer{
+    display: block;
+  }
+  
+  .thumb{
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }

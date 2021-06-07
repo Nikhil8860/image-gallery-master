@@ -1,48 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+{% include 'scripts.html' %}
+{% include 'nav.html' %}
+<!------ Include the above in your HEAD tag ---------->
 
-<head>
-    {% include 'head-imports.html' %}
-</head>
-
-<body style="background-color:green">
-<header>
-    <nav class="navbar navbar-fixed navbar-inner header" style="padding: 0px 16px">
-        <div class="navbar-brand" style="color: green;display: table;">
-            <i class="fa fa-bolt fa-3x" style="color: white;"></i>
-            <a href="/"
-               style="display: table-cell; vertical-align: middle; padding-left: 15px;color: white;">CHARAN DAL</a>
+<div class="container">
+    <div class="row">
+        <div class="row">
+            {% for image in images %}
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Im so nice"
+                    data-image="{{ url_for('send_image', filename=image) }}"
+                    data-target="#image-gallery">
+                    <img class="img-thumbnail" src="{{ url_for('send_image', filename=image) }}" alt="Another alt text">
+                </a>
+            </div>
+            {% endfor %}
         </div>
 
-        <ul class="nav pull-right">
-            <li>
-                <a class="nav-link" href="/register">Register</a>
-            </li>
-            <li>
-                <a class="nav-link" href="/upload">Upload</a>
-            </li>
-            <li>
-                <a class="nav-link" href="/filters">Filters</a>
-            </li>
-        </ul>
-    </nav>
-</header>
+        <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="image-gallery-title"></h4>
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                                class="sr-only">Close</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img id="image-gallery-image" class="img-responsive col-md-12" src="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary float-left" id="show-previous-image"><i
+                                class="fa fa-arrow-left"></i>
+                        </button>
 
-<div class="container-fluid" style="margin-top: 10px;">
-    <div style="color: white;">सदा किसानों के हक के लिए लड़ने वाले चौधरी चरण सिंह जिन्होंने किसानों को उनकी जमीन दिलाई और
-        उन्हें किसान कहलाने का हक दिया
-        हमारा उद्देश्य चौधरी चरण सिंह जी के विचारों पर चलना और उनकी दी हुई विरासत को संभालकर रखना।
+                        <button type="button" id="show-next-image" class="btn btn-secondary float-right"><i
+                                class="fa fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-<section class="container" id="content">
-    {% include 'gallery.html' %}
-</section>
-
-{% include 'scripts.html' %}
-
-<script src="{{url_for('static', filename='scripts/main.js')}}"></script>
-
-</body>
-
-</html>
+{% include 'footer.html'  %}
