@@ -25,7 +25,6 @@ app.config['MYSQL_DB'] = 'charan_dal'
 Session(app)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-
 MERCHANT_ID = "lNwrBZ12471380578241"
 MERCHANT_KEY = "QmfZKLHeBQmFd@sD"
 WEBSITE_NAME = "WEBSTAGING"
