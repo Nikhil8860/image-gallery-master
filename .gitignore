@@ -4,3 +4,5 @@
 # dotenv environment variables file
 .env
 
+# flask session
+flask_session
